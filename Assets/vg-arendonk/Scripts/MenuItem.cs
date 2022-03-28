@@ -8,5 +8,18 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class MenuItem : MonoBehaviour
 {
-    public bool hasSubmenu = false;
+    public string Title
+    {
+        get { return GetComponent<Text>().text; }
+        set { GetComponent<Text>().text = value; } 
+    }
+
+    public MenuItem[] SubMenuItems
+    {
+        get { 
+            List<MenuItem> items = new List<MenuItem>(GetComponentsInChildren<MenuItem>());
+            items.Remove(this);
+            return items.ToArray();
+        }
+    }
 }
