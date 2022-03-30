@@ -1,6 +1,11 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
+
 
 public class MenuManager : MonoBehaviour
 {
@@ -8,16 +13,17 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject MainMenuPrefab;
     [SerializeField] GameObject SubMenuPrefab;
 
+    LayoutStruct layout;
     MenuItem[] mainMenuItems;
     int mainActive = 0;
     float location = 0f;
 
-    void Start()
+    IEnumerator Start()
     {
-        string[] mainItems = new[] { "Home", "Nieuws", "Contact", "other", "More" };
-        string[] subItems = new[] { "Nieuwe website", "Alleh nog wel in ontwikkeling" };
-        InitializeMainItems(mainItems, subItems);
+        yield return RetrieveLayoutFromWeb();
+        InitializeMainItems(layout);
         PositionPages();
+        yield return null;
     }
 
     void Update()
@@ -28,27 +34,41 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    void InitializeMainItems(string[] mainItems, string[] subItems)
+    IEnumerator RetrieveLayoutFromWeb()
+    {
+        UnityWebRequest webRequest = UnityWebRequest.Get("https://douweravers.github.io/vg-arendonk.be/Resources/test.json");
+        yield return webRequest.SendWebRequest();
+
+        if (webRequest.result != UnityWebRequest.Result.Success)
+        {
+            throw new InvalidOperationException(webRequest.error);
+        }
+        layout = JsonUtility.FromJson<LayoutStruct>(webRequest.downloadHandler.text);
+        yield return null;
+
+    }
+
+    void InitializeMainItems(LayoutStruct layout)
     {
         List<MenuItem> menuItems = new List<MenuItem>();
-        foreach (string item in mainItems)
+        foreach (Page item in layout.Pages)
         {
             GameObject menuObject = Instantiate(MainMenuPrefab);
-            menuObject.name = item;
+            menuObject.name = item.Title;
             menuObject.transform.SetParent(transform);
             MenuItem menuItem = menuObject.GetComponent<MenuItem>();
-            menuItem.Title = item;
+            menuItem.Title = item.Title;
             menuItems.Add(menuItem);
             menuItem.GetComponent<Text>().enabled = true;
-            if (item == "Nieuws")
+            if (item.SubPages != null)
             {
-                foreach (string subItem in subItems)
+                foreach (SubPage subItem in item.SubPages)
                 {
                     GameObject subMenuObject = Instantiate(SubMenuPrefab);
-                    subMenuObject.name = subItem;
+                    subMenuObject.name = subItem.Title;
                     subMenuObject.transform.SetParent(menuObject.transform);
                     MenuItem subMenuItem = subMenuObject.GetComponent<MenuItem>();
-                    subMenuItem.Title = subItem;
+                    subMenuItem.Title = subItem.Title;
                     subMenuItem.GetComponent<Text>().enabled = false;
                 }
             }
@@ -59,7 +79,6 @@ public class MenuManager : MonoBehaviour
     void PositionPages()
     {
         List<MenuItem> visibleItems = new List<MenuItem>(mainMenuItems);
-        location = Mathf.Clamp(location - Input.mouseScrollDelta.y * ScrollScaler, 0, visibleItems.Count-1);
         if (mainActive <= Mathf.RoundToInt(location) &&
             Mathf.RoundToInt(location) <= mainActive + visibleItems[mainActive].SubMenuItems.Length)
         {
@@ -69,10 +88,11 @@ public class MenuManager : MonoBehaviour
         else
         {
             foreach (MenuItem item in visibleItems[mainActive].SubMenuItems) item.GetComponent<Text>().enabled = false;
-            if(mainActive < Mathf.RoundToInt(location)) location -= visibleItems[mainActive].SubMenuItems.Length;
+            if (mainActive < Mathf.RoundToInt(location)) location -= visibleItems[mainActive].SubMenuItems.Length;
             mainActive = Mathf.RoundToInt(location);
         }
 
+        location = Mathf.Clamp(location - Input.mouseScrollDelta.y * ScrollScaler, 0, visibleItems.Count - 1);
         for (int i = 0; i < visibleItems.Count; i++)
         {
             MenuItem item = visibleItems[i];
@@ -84,7 +104,7 @@ public class MenuManager : MonoBehaviour
             item.GetComponent<RectTransform>().position = transform.TransformPoint(position);
             if (i == Mathf.RoundToInt(location))
             {
-                if(item.transform.parent.GetComponent<MenuItem>() == null) item.GetComponent<Text>().fontSize = 80;
+                if (item.transform.parent.GetComponent<MenuItem>() == null) item.GetComponent<Text>().fontSize = 80;
                 else item.GetComponent<Text>().fontSize = 60;
             }
             else if (Mathf.Abs(i - Mathf.RoundToInt(location)) < 3)
@@ -94,7 +114,7 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
-                if (item.transform.parent.GetComponent<MenuItem>() == null) 
+                if (item.transform.parent.GetComponent<MenuItem>() == null)
                     item.GetComponent<Text>().fontSize = (int)Mathf.Lerp(50, 0, Mathf.Abs(location - i) / 3 - 1);
                 else
                     item.GetComponent<Text>().fontSize = (int)Mathf.Lerp(30, 0, Mathf.Abs(location - i) / 3 - 1);
