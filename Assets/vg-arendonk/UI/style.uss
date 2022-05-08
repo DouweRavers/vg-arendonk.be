@@ -1,0 +1,33 @@
+.label-title {
+    translate: 0 0;
+    rotate: 0;
+    font-size: 60px;
+    color: rgb(5, 133, 123);
+    -unity-font-style: bold;
+}
+
+.label-title:hover {
+    translate: 0 0;
+    rotate: 0;
+    font-size: 60px;
+    color: rgb(219, 207, 28);
+    -unity-font-style: bold;
+}
+
+.label-title:active {
+    translate: 0 0;
+    rotate: 0;
+    font-size: 60px;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+}
+
+.label-h1 {
+    font-size: 40px;
+    color: rgb(255, 41, 0);
+}
+
+.label-h1:hover {
+    font-size: 40px;
+    color: rgb(255, 144, 0);
+}
