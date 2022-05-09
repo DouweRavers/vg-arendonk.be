@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    [SerializeField]
+    float turningSpeed = 0.05f;
     void Start()
     {
         CinemachineCore.GetInputAxis = GetAxisCustom;
@@ -10,28 +12,7 @@ public class CameraManager : MonoBehaviour
 
     public float GetAxisCustom(string axisName)
     {
-        if (axisName == "Mouse X")
-        {
-            if (Input.GetMouseButton(0))
-            {
-                return Input.GetAxis("Mouse X");
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        else if (axisName == "Mouse Y")
-        {
-            if (Input.GetMouseButton(0))
-            {
-                return Input.GetAxis("Mouse Y");
-            }
-            else
-            {
-                return 0;
-            }
-        }
+        if (axisName == "Mouse X") return turningSpeed;
         return Input.GetAxis(axisName);
     }
 }
