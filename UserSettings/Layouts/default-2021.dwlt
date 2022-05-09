@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 101
+  controlID: 72
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 102
+  controlID: 99
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 103
+  controlID: 100
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,22 +317,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/vg-arendonk/UI
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/vg-arendonk/UI
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\douwe\Projects\vg-arendonk.be
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 102.20001}
-    m_SelectedIDs: 04610000
-    m_LastClickedID: 24836
-    m_ExpandedIDs: 00000000ec6000000061000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: ec600000
+    m_LastClickedID: 24812
+    m_ExpandedIDs: 00000000ec600000006100001261000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 160
+    m_CachedPref: -386
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
@@ -488,9 +488,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 04610000
+      m_SelectedIDs: ec600000
       m_LastClickedID: 0
-      m_ExpandedIDs: 7679ffff4a7affffee7bffffcc7cffffce7cffff24a0fffff8a0ffff9ca2ffffb0a2ffff7aa3ffff7ca3ffff1efbffff
+      m_ExpandedIDs: ac7bfeff807cfeff247efeff2081feff6881feffbe83feffd066ffffde6dffff68e5ffff1efbffffb85f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -623,7 +623,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -739,9 +739,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.9817543, y: -0.2511139, z: 6.032737}
+    m_Target: {x: 15.589369, y: -5.902981, z: 14.408665}
     speed: 2
-    m_Value: {x: -1.9817543, y: -0.2511139, z: 6.032737}
+    m_Value: {x: 15.589369, y: -5.902981, z: 14.408665}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -788,13 +788,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.18552321, y: 0.7479248, z: -0.23407546, w: -0.5927893}
+    m_Target: {x: -0.27675942, y: -0.31843984, z: 0.09777655, w: -0.9013574}
     speed: 2
-    m_Value: {x: -0.18552315, y: 0.74792457, z: -0.23407537, w: -0.59278905}
+    m_Value: {x: -0.27675873, y: -0.31843904, z: 0.0977763, w: -0.90135515}
   m_Size:
-    m_Target: 16.927366
+    m_Target: 26.419878
     speed: 2
-    m_Value: 16.927366
+    m_Value: 26.419878
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -878,7 +878,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -891,18 +891,18 @@ MonoBehaviour:
       y: 21
       width: 831
       height: 386
-    m_Scale: {x: 0.44675925, y: 0.44675925}
-    m_Translation: {x: 415.5, y: 193}
+    m_Scale: {x: 0.4589206, y: 0.4589206}
+    m_Translation: {x: 415.5, y: 189.63632}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -930.0311
-      y: -432
-      width: 1860.0623
-      height: 864
+      x: -905.3854
+      y: -413.2225
+      width: 1810.7708
+      height: 841.1041
     m_MinimalGUI: 1
   m_defaultScale: 0.44675925
   m_LastWindowPixelSize: {x: 1038.75, y: 508.75}
