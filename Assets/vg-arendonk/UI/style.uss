@@ -32,17 +32,18 @@
 }
 
 .menu-show {
-    transition-duration: 0s, 1s;
-    transition-property: display, scale;
+    transition-duration: 0s, 1s, 1s;
+    transition-property: display, scale, max-height;
     transform-origin: top;
+    max-height: 500px;
 }
 
 .menu-hide {
-    display: none;
+    display: flex;
     transform-origin: top;
-    transition-property: scale, display;
-    transition-delay: 0s, 1s;
-    transition-duration: 1s, 0s;
+    transition-property: scale, display, max-height;
+    transition-delay: 0s, 1s, 0s;
+    transition-duration: 1s, 0s, 1s;
     scale: 1 0;
-    height: auto;
+    max-height: 0;
 }

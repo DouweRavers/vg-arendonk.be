@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class MainUIManager : MonoBehaviour
 {
     VisualElement _root;
-    float _radius = 0f;
     VisualElement _activeSubMenu = null;
 
     void Start()
@@ -16,7 +15,7 @@ public class MainUIManager : MonoBehaviour
 
     void Update()
     {
-        if(Time.frameCount % 5 == 0) UpdateMenu(); 
+        UpdateMenu();
     }
 
     void SetUpTitleMenu()
@@ -46,6 +45,7 @@ public class MainUIManager : MonoBehaviour
                     _activeSubMenu.EnableInClassList("menu-hide", false);
                     _activeSubMenu.EnableInClassList("menu-show", true);
                 }
+                UpdateMenu();
             });
         }
     }
@@ -57,7 +57,8 @@ public class MainUIManager : MonoBehaviour
         List<VisualElement> children = new List<VisualElement>(titleMenu.Children());
         
         Vector2 uiCenter = _root.worldBound.center;
-        _radius = logo.worldBound.width * 1.3f;
+        float radius = logo.worldBound.width * 1.3f;
+        if (radius.Equals(float.NaN)) return;
         for (int i = 0; i < children.Count; i++)
         {
             Label label = children[i] as Label;
@@ -67,8 +68,8 @@ public class MainUIManager : MonoBehaviour
                 continue;
             };
             Vector2 elementCenter = label.worldBound.center;
-            float angle = Mathf.Asin((elementCenter.y - uiCenter.y) / _radius);
-            float offset = (1 - Mathf.Cos(angle)) * _radius;
+            float angle = Mathf.Asin((elementCenter.y - uiCenter.y) / radius);
+            float offset = (1 - Mathf.Cos(angle)) * radius;
             label.transform.position = Vector3.left * offset;
         }
     }

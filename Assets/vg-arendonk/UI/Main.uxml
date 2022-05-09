@@ -5,13 +5,13 @@
         <ui:VisualElement name="TitleMenu" style="left: 20px;">
             <ui:Label text="Home" display-tooltip-when-elided="true" name="Home" class="label-title" />
             <ui:Label text="Nieuws" display-tooltip-when-elided="true" name="Nieuws" class="label-title" style="justify-content: flex-end; flex-grow: 1;" />
-            <ui:VisualElement name="Nieuws-menu" class="menu-hide">
+            <ui:VisualElement name="Nieuws-menu">
                 <ui:Label text="Item 1" display-tooltip-when-elided="true" name="Item1" class="label-h1" />
                 <ui:Label text="Item 2" display-tooltip-when-elided="true" name="Item2" class="label-h1" />
                 <ui:Label text="Item 3" display-tooltip-when-elided="true" name="Item3" class="label-h1" />
             </ui:VisualElement>
             <ui:Label text="Programma" display-tooltip-when-elided="true" name="Programma" class="label-title" style="justify-content: flex-end; flex-grow: 1;" />
-            <ui:VisualElement name="Programma-menu" class="menu-hide">
+            <ui:VisualElement name="Programma-menu">
                 <ui:Label text="Item 1" display-tooltip-when-elided="true" name="Item1" class="label-h1" />
                 <ui:Label text="Item 2" display-tooltip-when-elided="true" name="Item2" class="label-h1" />
                 <ui:Label text="Item 3" display-tooltip-when-elided="true" name="Item3" class="label-h1" />
