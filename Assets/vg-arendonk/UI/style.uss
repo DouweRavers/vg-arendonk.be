@@ -1,25 +1,24 @@
 .label-title {
-    translate: 0 0;
-    rotate: 0;
     font-size: 60px;
     color: rgb(5, 133, 123);
     -unity-font-style: bold;
+    transition-duration: 0.3s;
 }
 
 .label-title:hover {
-    translate: 0 0;
-    rotate: 0;
     font-size: 60px;
     color: rgb(219, 207, 28);
     -unity-font-style: bold;
+    transition-duration: 0.3s;
+    scale: 1.1 1.1;
 }
 
 .label-title:active {
-    translate: 0 0;
-    rotate: 0;
     font-size: 60px;
     color: rgb(255, 255, 255);
     -unity-font-style: bold;
+    scale: 1.2 1.2;
+    transition-duration: 0.1s;
 }
 
 .label-h1 {
@@ -30,4 +29,20 @@
 .label-h1:hover {
     font-size: 40px;
     color: rgb(255, 144, 0);
+}
+
+.menu-show {
+    transition-duration: 0s, 1s;
+    transition-property: display, scale;
+    transform-origin: top;
+}
+
+.menu-hide {
+    display: none;
+    transform-origin: top;
+    transition-property: scale, display;
+    transition-delay: 0s, 1s;
+    transition-duration: 1s, 0s;
+    scale: 1 0;
+    height: auto;
 }

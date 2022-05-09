@@ -1,11 +1,17 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/vg-arendonk/UI/style.uss?fileID=7433441132597879392&amp;guid=dab1fe0b9f3d35f499202ee2aa0d3d98&amp;type=3#style" />
-    <ui:VisualElement name="Root" style="position: relative; flex-direction: row; flex-grow: 1; flex-shrink: 1; align-items: center; justify-content: flex-start; background-image: none; height: 100%; width: auto; top: auto; right: auto; bottom: auto; left: auto;">
+    <ui:VisualElement name="Root" style="position: relative; flex-direction: row; flex-grow: 1; flex-shrink: 1; align-items: center; justify-content: flex-start; background-image: url(&apos;project://database/Assets/vg-arendonk/Textures/gradient.png?fileID=2800000&amp;guid=c93976966769863489506ce8c2a7994c&amp;type=3#gradient&apos;); height: 100%; width: auto; top: auto; right: auto; bottom: auto; left: auto;">
         <ui:VisualElement name="Logo" style="position: relative; flex-direction: column; flex-grow: 0; flex-shrink: 1; align-items: flex-start; justify-content: space-around; background-image: url(&apos;project://database/Assets/vg-arendonk/Textures/Logo.png?fileID=2800000&amp;guid=ead1d92821c6ad945993ffc2283d42c0&amp;type=3#Logo&apos;); height: 50%; width: 15%; top: auto; right: auto; bottom: auto; left: auto;" />
         <ui:VisualElement name="TitleMenu" style="left: 20px;">
             <ui:Label text="Home" display-tooltip-when-elided="true" name="Home" class="label-title" />
-            <ui:Label text="News" display-tooltip-when-elided="true" name="News" class="label-title" style="justify-content: flex-end; flex-grow: 1;" />
-            <ui:VisualElement name="News-menu">
+            <ui:Label text="Nieuws" display-tooltip-when-elided="true" name="Nieuws" class="label-title" style="justify-content: flex-end; flex-grow: 1;" />
+            <ui:VisualElement name="Nieuws-menu" class="menu-hide">
+                <ui:Label text="Item 1" display-tooltip-when-elided="true" name="Item1" class="label-h1" />
+                <ui:Label text="Item 2" display-tooltip-when-elided="true" name="Item2" class="label-h1" />
+                <ui:Label text="Item 3" display-tooltip-when-elided="true" name="Item3" class="label-h1" />
+            </ui:VisualElement>
+            <ui:Label text="Programma" display-tooltip-when-elided="true" name="Programma" class="label-title" style="justify-content: flex-end; flex-grow: 1;" />
+            <ui:VisualElement name="Programma-menu" class="menu-hide">
                 <ui:Label text="Item 1" display-tooltip-when-elided="true" name="Item1" class="label-h1" />
                 <ui:Label text="Item 2" display-tooltip-when-elided="true" name="Item2" class="label-h1" />
                 <ui:Label text="Item 3" display-tooltip-when-elided="true" name="Item3" class="label-h1" />
