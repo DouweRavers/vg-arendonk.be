@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
-
+using Cinemachine;
 public class MainUIManager : MonoBehaviour
 {
+    [SerializeField]
+    Transform Cameras;
+    
     VisualElement _root;
     VisualElement _activeSubMenu = null;
-
+    
     void Start()
     {
         _root = GetComponent<UIDocument>().rootVisualElement;
@@ -30,9 +33,19 @@ public class MainUIManager : MonoBehaviour
                 children[i].AddToClassList("menu-show");
                 children[i].EnableInClassList("menu-hide", true);
                 children[i].EnableInClassList("menu-show", false);
-                children.AddRange(children[i].Children());
+                foreach (VisualElement child in children[i].Children())
+                {
+                    label = child as Label;
+                    if (label == null) continue;
+                    label.RegisterCallback<MouseDownEvent>((evt) =>
+                    {
+                        Debug.Log(label.name);
+                    });
+                }
                 continue;
-            };
+            }; 
+            int x = i;
+
             label.RegisterCallback<MouseDownEvent>((evt) => {
                 if (_activeSubMenu != null)
                 {
@@ -45,7 +58,11 @@ public class MainUIManager : MonoBehaviour
                     _activeSubMenu.EnableInClassList("menu-hide", false);
                     _activeSubMenu.EnableInClassList("menu-show", true);
                 }
-                UpdateMenu();
+                CinemachineVirtualCamera[] cameras = Cameras.GetComponentsInChildren<CinemachineVirtualCamera>();
+                CinemachineVirtualCamera camera = cameras[x % cameras.Length];
+                foreach (var cam in cameras) cam.Priority = 0;
+                camera.Priority = 10;
+                Debug.Log(x + ": " + camera.name);
             });
         }
     }
